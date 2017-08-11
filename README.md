@@ -1,4 +1,5 @@
-HackerRank solved problems
+HackerRank solved problems in different languages (go, java, javascript)
+
 https://www.hackerrank.com/bunny116
 =================================
 
