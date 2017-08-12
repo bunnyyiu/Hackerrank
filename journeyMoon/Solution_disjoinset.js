@@ -53,21 +53,19 @@ function mergeSetAndRemoveSmallSet(set1Id, set2Id, adjList) {
     let set2 = adjList[set2Id];
     let newSize = set1.size + set2.size;
     if (set2.size < set1.size) {
-        let newSet = Object.assign(set1, set2);
-        newSet.size = newSize;
-        adjList[set2Id] = null;
+        Object.assign(set1, set2);
+        set1.size = newSize;
+        delete adjList[set2Id];
     } else {
-        let newSet = Object.assign(set2, set1);
-        newSet.size = newSize;
-        adjList[set1Id] = null;
+        Object.assign(set2, set1);
+        set2.size = newSize;
+        delete adjList[set1Id];
     }
 }
 
 function findDisjoinGroups(adjList, singleMember) {
     let count = 0;
-    let keys = Object.keys(adjList).filter(function (key) {
-        return adjList[key] != null;
-    });
+    let keys = Object.keys(adjList);
     let keyLen = keys.length;
     let sizeCount = 0;
     for (let i = 0; i < keyLen - 1; i++) {
